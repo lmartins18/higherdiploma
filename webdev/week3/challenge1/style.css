@@ -1,0 +1,40 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+h2 {
+  margin: 0;
+  color: white;
+}
+.rectangle {
+  height: 200px;
+  width: 300px;
+  margin: 1px;
+}
+#upper-container {
+  background: orange;
+  width: 100%;
+  height: 50%;
+  margin-bottom: 10px;
+}
+#upper-container .rectangle {
+  float: right;
+}
+#lower-container {
+  background: green;
+  width: 100%;
+  height: 50%;
+}
+#lower-container .rectangle {
+  float: left;
+}
+#lower-container-inner-container .rectangle {
+  float: right;
+}
+.black-bg {
+  background: black;
+}
+.blue-bg {
+  background: blue;
+}

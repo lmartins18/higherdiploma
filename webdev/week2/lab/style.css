@@ -1,0 +1,22 @@
+body {
+  background: #333;
+  font-family: "Courier New", monospace;
+  margin: 1rem;
+  color: lightGray;
+  font-size: 24px;
+}
+.lime-text {
+  color: lime;
+}
+.dark-green-text {
+  color: green;
+}
+.orange-text {
+  color: orange;
+}
+.dark-lime-text {
+  color: limeGreen;
+}
+.green-shadow {
+  text-shadow: 2px 2px 5px green;
+}

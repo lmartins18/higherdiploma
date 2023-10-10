@@ -1,0 +1,45 @@
+body {
+  background-color: #feeafa;
+  color: #252627;
+  font-family: Georgia, serif;
+  text-align: center;
+  margin: auto;
+}
+ul, ol {
+  display: inline-block;
+  text-align: left;
+  margin: 0;
+}
+h2 {
+  text-shadow: 2px 2px 5px #ba1f33;
+}
+img {
+  height: 100px;
+}
+#experience-container {
+  margin: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+#certifications-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 100px;
+  font-weight: bold;
+
+}
+@media screen and (max-width: 480px) {
+  body {
+    background-color: lightgreen;
+  }
+  #experience-container {
+    flex-direction: column;
+  }
+  #certifications-container {
+    flex-direction: column;
+    gap: 1px;
+  }
+}
