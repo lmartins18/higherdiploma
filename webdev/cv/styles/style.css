@@ -1,0 +1,19 @@
+body {
+  background-color: #feeafa;
+  color: #252627;
+  font-family: Georgia, serif;
+  text-align: center;
+  margin: auto;
+  padding-bottom: 1rem;
+}
+ul {
+  display: inline-block;
+  text-align: left;
+  margin: 0;
+}
+ul#warehouse-list {
+  list-style-type: circle;
+}
+h2 {
+  text-shadow: 2px 2px 5px #ba1f33;
+}
