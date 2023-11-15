@@ -1,0 +1,3 @@
+[submodule "webdev/webdev/rockpaperscissors"]
+	path = webdev/webdev/rockpaperscissors
+	url = https://github.com/lmartins18/rockpaperscissors.git
