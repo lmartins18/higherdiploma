@@ -1,0 +1,7 @@
+- Create a web page that prints all of the lyrics to '99 bottles of beer' https://www.songfacts.com/lyrics/traditional/99-bottles-of-beer
+https://github.com/lmartins18/99BottlesOfBeerJS/
+
+- Take the previously created Rock Paper Scissors application and allow the user to play 3 times.
+Bonus: The game should stop if the user wins
+Note: The current implementation of Rock, Paper, Scissors! works on the basis of the best out of three. 
+https://github.com/lmartins18/rockpaperscissors
