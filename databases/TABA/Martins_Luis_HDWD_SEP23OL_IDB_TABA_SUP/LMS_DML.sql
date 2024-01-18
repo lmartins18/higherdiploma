@@ -5,7 +5,7 @@ VALUES ('123 Main Street', 'Apt 4', NULL, 'Cityville', 'District A', 'Country X'
 
 -- Insert data into ISBN table
 INSERT INTO ISBN (ISBN)
-VALUES ('978-1-123456-78-9'), ('978-2-234567-89-0');
+VALUES ('978-1-123456-78-9'), ('978-2-234567-89-0'), ('978-2-234567-89-2');
 
 -- Insert data into MemberType table
 INSERT INTO MemberType (MemberType)
@@ -19,18 +19,18 @@ VALUES ('John Doe'), ('Jane Smith');
 INSERT INTO Publisher (PublisherName, ISBN_ID, Address_ID)
 VALUES ('ABC Publications', 1, 1), ('XYZ Press', 2, 2);
 
--- Insert data into Book table (excluding Author_ID)
+-- Insert data into Book table 
 INSERT INTO Book (Title, Price, Availability, Publisher_ID, ISBN_ID)
 VALUES ('Introduction to SQL', 29.99, 50, 1, 1),
        ('Data Science Essentials', 39.99, 25, 2, 2),
-       ('The Art of Programming', 45.00, 30, 1, 3);  -- New book with multiple authors
+       ('The Art of Programming', 45.00, 30, 1, 3);  
 
--- Insert data into BookAuthor table to link books and authors
+-- Insert data into BookAuthor 
 INSERT INTO BookAuthor (Book_ID, Author_ID)
-VALUES (1, 1),  -- Introduction to SQL by John Doe
-       (2, 2),  -- Data Science Essentials by Jane Smith
-       (3, 1),  -- The Art of Programming by John Doe
-       (3, 2);  -- The Art of Programming by Jane Smith (multiple authors)
+VALUES (1, 1),  
+       (2, 2),  
+       (3, 1),  
+       (3, 2);  
 
 -- Insert data into Member table
 INSERT INTO Member (MemberName, MemberJoinDate, Address_ID, MemberType_ID)

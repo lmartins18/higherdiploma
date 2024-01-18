@@ -6,7 +6,8 @@ CREATE TABLE Book (
     Publisher_ID integer(10) NOT NULL,
     ISBN_ID integer(10) NOT NULL,
     FOREIGN KEY(Publisher_ID) REFERENCES Publisher(Publisher_ID),
-    FOREIGN KEY(ISBN_ID) REFERENCES ISBN(ISBN_ID)
+    FOREIGN KEY(ISBN_ID) REFERENCES ISBN(ISBN_ID),
+    UNIQUE (Title, ISBN_ID)
 );
 
 CREATE TABLE BookAuthor (
@@ -33,7 +34,8 @@ CREATE TABLE Member (
     Address_ID integer(10) NOT NULL,
     MemberType_ID integer(10) NOT NULL,
     FOREIGN KEY(Address_ID) REFERENCES Address(Address_ID),
-    FOREIGN KEY(MemberType_ID) REFERENCES MemberType(MemberType_ID)
+    FOREIGN KEY(MemberType_ID) REFERENCES MemberType(MemberType_ID),
+    UNIQUE (MemberName, Address_ID) 
 );
 
 CREATE TABLE Loan (
@@ -55,12 +57,13 @@ CREATE TABLE Address (
     City varchar(50) NOT NULL,
     District varchar(50) NOT NULL,
     Country varchar(50) NOT NULL,
-    PostalCode varchar(10) NOT NULL
+    PostalCode varchar(10) NOT NULL,
+    UNIQUE (Address1, Address2, Address3, City, District, PostalCode) 
 );
 
 CREATE TABLE ISBN (
     ISBN_ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    ISBN varchar(17) NOT NULL
+    ISBN varchar(17) NOT NULL UNIQUE
 );
 
 CREATE TABLE MemberType (
