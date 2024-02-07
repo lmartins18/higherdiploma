@@ -1,3 +1,6 @@
 [submodule "webdev/webdev/rockpaperscissors"]
 	path = webdev/webdev/rockpaperscissors
 	url = https://github.com/lmartins18/rockpaperscissors.git
+[submodule "devops-lab-3-task"]
+	path = devops-lab-3-task
+	url = https://github.com/lmartins18/devops-lab-3-task.git
