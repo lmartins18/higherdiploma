@@ -1,0 +1,19 @@
+<h1>Simple Calculator</h1>
+
+<%= form_with url: "/multiplication", local: true, data: { turbo: false } do |f| %>
+<%= text_field_tag :number1 %>
+
+<%= text_field_tag :number2 %>
+
+<%= submit_tag "x" %>
+
+<% end %>
+
+<hr>
+
+<% if @num1.present? && @num2.present? %>
+  <h1>Multiplication</h1><br>
+  <%= @num1 %> x <%= @num2 %> = <%= @result %>
+<% end %>
+<hr>
+<%= link_to 'Go back', "/", class: 'button alt' %>
