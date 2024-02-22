@@ -22,6 +22,11 @@ body {
     sans-serif;
 }
 
+input,
+textarea {
+  color: black;
+}
+
 .navbar-list li a:hover {
   @apply text-orange-400
 }

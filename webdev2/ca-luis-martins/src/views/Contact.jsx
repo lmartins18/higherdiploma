@@ -1,91 +1,118 @@
-export const Contact = () => (
-    <>
-        {/* < !--Main content section for registration form-- > */}
-        <main className="flex-1 p-3 overflow-auto">
-            {/* <!-- Registration Form --> */}
-            <form id="registration-form"
-                className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md my-auto h-100 overflow-auto"
-                onsubmit="validateForm()">
-                <h2 className="text-2xl font-semibold text-center mb-4">Gym Registration</h2>
+// ContactForm.js
+import React, { useState } from 'react';
+import { FaUser, FaEnvelope, FaComment, FaPaperPlane } from 'react-icons/fa';
 
-                {/* <!-- Grid layout for first and last name --> */}
-                <div className="grid grid-cols-2 gap-4">
+export const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: '',
+    });
+
+    const [errors, setErrors] = useState({});
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        // Basic validation
+        const newErrors = {};
+
+        if (!formData.name) {
+            newErrors.name = 'Name is required';
+        }
+
+        if (!formData.email) {
+            newErrors.email = 'Email is required';
+        } else if (!validateEmail(formData.email)) {
+            newErrors.email = 'Invalid email address';
+        }
+
+        if (!formData.message) {
+            newErrors.message = 'Message is required';
+        }
+
+        setErrors(newErrors);
+
+        if (Object.keys(newErrors).length > 0) {
+            // Stop submission if there are validation errors
+            return;
+        }
+
+        // The rest of your form submission logic
+    };
+
+    return (
+        <div className="flex justify-center p-6">
+            <div className="mt-16 w-full lg:w-1/3">
+                <h2 className="text-3xl font-bold font-uncial text-emerald-700">Get in touch.</h2>
+                <div className="mt-6 mb-12">
+                    <p>Embark on your Irish adventure with confidence!</p>
+                    <p>Have questions about navigating the Emerald Isle or seeking personalised travel advice?</p>
+                    <p> Reach out to us!</p>
+                </div>
+                <form onSubmit={handleSubmit} className="max-w-md">
                     <div className="mb-4">
-                        <label for="firstName" className="block text-sm font-medium text-gray-600">First Name</label>
-                        <input type="text" id="firstName" placeholder="Enter your first name"
-                            className="mt-1 p-2 w-full border rounded-md" />
+                        <label htmlFor="name" className="text-sm font-medium text-gray-600">
+                            <FaUser className="inline-block mr-2" />
+                            Name:
+                        </label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            className={`w-full p-2 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+                        />
+                        {errors.name && <p className="text-red-500 mt-2">{errors.name}</p>}
                     </div>
                     <div className="mb-4">
-                        <label for="lastName" className="block text-sm font-medium text-gray-600">Last Name</label>
-                        <input type="text" id="lastName" placeholder="Enter your last name"
-                            className="mt-1 p-2 w-full border rounded-md" />
+                        <label htmlFor="email" className="text-sm font-medium text-gray-600">
+                            <FaEnvelope className="inline-block mr-2" />
+                            Email:
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            className={`w-full p-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+                        />
+                        {errors.email && <p className="text-red-500 mt-2">{errors.email}</p>}
                     </div>
-                </div>
-
-                {/* <!-- Email input --> */}
-                <div className="mb-4">
-                    <label for="email" className="block text-sm font-medium text-gray-600">Email</label>
-                    <input type="email" id="email" placeholder="Enter your email" className="mt-1 p-2 w-full border rounded-md" />
-                </div>
-
-                {/* <!-- Password input --> */}
-                <div className="mb-4">
-                    <label for="password" className="block text-sm font-medium text-gray-600">Password</label>
-                    <input type="password" id="password" placeholder="Enter your password"
-                        className="mt-1 p-2 w-full border rounded-md" />
-                </div>
-
-                {/* <!-- Confirm Password input --> */}
-                <div className="mb-4">
-                    <label for="confirmPassword" className="block text-sm font-medium text-gray-600">Confirm Password</label>
-                    <input type="password" id="confirmPassword" placeholder="Confirm your password"
-                        className="mt-1 p-2 w-full border rounded-md" />
-                </div>
-
-                {/* <!-- Password error list --> */}
-                <ul id="passwordErrorList" className="list-disc list-outside mx-3 text-red-500 mb-3"></ul>
-
-                {/* <!-- Phone Number input --> */}
-                <div className="mb-4">
-                    <label for="phoneNumber" className="block text-sm font-medium text-gray-600">Phone Number</label>
-                    <input type="tel" id="phoneNumber" placeholder="Enter your phone number"
-                        className="mt-1 p-2 w-full border rounded-md" />
-                </div>
-
-                {/* <!-- Date of Birth input --> */}
-                <div className="mb-4">
-                    <label for="dob" className="block text-sm font-medium text-gray-600">Date of Birth</label>
-                    <input type="date" id="dob" className="mt-1 p-2 w-full border rounded-md" />
-                </div>
-
-                {/* <!-- Membership Option dropdown --> */}
-                <div className="mb-4">
-                    <label for="membership" className="block text-sm font-medium text-gray-600">Membership Option</label>
-                    <select id="membership" className="mt-1 p-2 w-full border rounded-md">
-                        <option value="copper">Copper</option>
-                        <option value="silver">Silver</option>
-                        <option value="gold">Gold</option>
-                        <option value="titanium">Titanium</option>
-                    </select>
-                </div>
-
-                {/* <!-- Terms and Conditions checkbox --> */}
-                <div className="mb-4">
-                    <div className="flex items-center">
-                        <p className="hidden">Terms and Conditions</p>
-                        <input type="checkbox" id="terms" className="form-checkbox" />
-                        <label for="terms" className="ml-2 text-sm text-gray-600">I accept the terms and conditions</label>
+                    <div className="mb-4">
+                        <label htmlFor="message" className="text-sm font-medium text-gray-600">
+                            <FaComment className="inline-block mr-2" />
+                            Message:
+                        </label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            value={formData.message}
+                            onChange={handleChange}
+                            className={`w-full p-2 border ${errors.message ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+                        ></textarea>
+                        {errors.message && <p className="text-red-500 mt-2">{errors.message}</p>}
                     </div>
-                </div>
-
-                {/* <!-- Register button --> */}
-                <button type="submit"
-                    className="w-full bg-orange-700 hover:bg-orange-800 text-white p-2 rounded-md">Register</button>
-
-                {/* <!-- Form validation error and empty field lists --> */}
-                <div id="formMessage" className="mt-4 text-red-500"></div>
-                <ul id="emptyFieldsList" className="list-disc mx-3 text-red-500 list-outside [&>li]:cursor-pointer"></ul>
-            </form>
-        </main>
-    </>
-)
+                    <button type="submit" className="bg-emerald-500 text-white py-2 px-4 rounded-md flex items-center">
+                        <FaPaperPlane className="mr-2" />
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    );
+};

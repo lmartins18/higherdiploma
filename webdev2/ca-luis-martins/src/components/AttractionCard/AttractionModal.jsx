@@ -20,8 +20,8 @@ export const AttractionModal = ({ isOpen, onClose, title, imgSrc, bodyText }) =>
                  <GrClose />
               </button>
             </div>
-            <div className="text-center">
-              <h3 className="font-uncial text-lg mb-6 leading-6 font-medium text-emerald-600 text-left" id="modal-headline">
+            <div className="text-left">
+              <h3 className="font-uncial text-lg mb-6 leading-6 font-medium text-emerald-700 dark:text-emerald-400 text-left" id="modal-headline">
                 {title}
               </h3>
               <hr />
