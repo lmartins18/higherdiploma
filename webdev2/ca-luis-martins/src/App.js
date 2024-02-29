@@ -1,5 +1,5 @@
 import './style.css';
-import { Home, Destinations, Accommodation, Contact } from './views';
+import { Home, Attractions, Accommodation, Contact } from './views';
 import { Layout } from './components/Layout';
 import {
   BrowserRouter,
@@ -15,7 +15,7 @@ function App() {
         <Route element={<Layout />} >
           <Route path="/" element={<Home />} />
           <Route path="/accommodation" element={<Accommodation />} />
-          <Route path="/destinations" element={<Destinations />} />
+          <Route path="/attractions" element={<Attractions />} />
           <Route path="/contact" element={<Contact />} />
         </Route>
       </Routes>

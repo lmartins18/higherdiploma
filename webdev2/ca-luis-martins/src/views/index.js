@@ -1,4 +1,4 @@
-export { Home } from "./Home.jsx"
+export { Home } from "./Home"
 export { Accommodation } from "./Accommodation";
-export { Destinations } from "./Destinations"
+export { Attractions } from "./Attractions/Attractions"
 export { Contact } from "./Contact"
