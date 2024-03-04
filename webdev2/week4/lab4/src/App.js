@@ -9,7 +9,7 @@ function App() {
   const [weather, setWeather] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [dateState, setDateState] = useState("");
+  const [dateState, setDateState] = useState(new Date());
 
   useEffect(() => {
     if (weather) {
@@ -51,7 +51,7 @@ function App() {
       return String.fromCodePoint(...codePoints);
     }
   }
-  // Components
+  // components
   const WeatherComponent = () => (
     <div id="weather-container">
       {error && <h2 id="error-message">Error: {error}</h2>}
